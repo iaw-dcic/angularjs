@@ -1,0 +1,31 @@
+<div class="titulo">
+    <h1>Sal's Pizza con AngularJS</h1>
+</div>
+<div class="menu" ng-controller="PedidoPizzas as pedido">
+    <table>
+        <thead>
+            <tr><th>Comprar</th><th>Pizzas</th><th>Tipo</th><th>Precio</th></tr>
+        </thead>
+    </table>
+    <div class="calculo">
+        <input class="filtro" type="text" data-ng-model="inputNombre"/>
+        <span class="total">
+            Total: <span>{{pedido.total() | currency}}</span>
+        </span>
+    </div>
+
+    <table id="tabla">
+        <tbody>
+        	<tr ng-repeat="pizza in pedido.pizzas | orderBy:'tipo' | filter:inputNombre">
+        		<td>
+                    <img ng-click="pedido.add(pizza)" src="images/plus.svg" class="svgicon"></img>   
+                    <input ng-model="pizza.cantidad" type="number" min="0" max="15">
+                    <img ng-click="pedido.remove(pizza)" src="images/minus.svg" class="svgicon"></img> 
+                </td>
+                <td>{{pizza.nombre}}</td>
+                <td>{{pizza.tipo}}</td>
+                <td>{{pizza.precio | currency}}</td>
+        	</tr>
+        </tbody>
+    </table>
+</div>
