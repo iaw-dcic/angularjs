@@ -1,15 +1,21 @@
-var jsonPizzas;
-
 var controladorPedido = angular.module('controladorPedido', []);
 
-controladorPedido.controller('PedidoPizzas', function() {
+controladorPedido.controller('PedidoPizzas', function($http) {
 	var pedido = this;
 	pedido.pizzas = [];
-  angular.forEach(jsonPizzas, function(pizza) {
-    pizzaEnPedido = jQuery.extend({}, pizza);
-    pizzaEnPedido.cantidad = 0;
-    pedido.pizzas.push(pizzaEnPedido);
-  });
+
+  $http.get('data/pizzas.json').
+    success(function(data, status, headers, config) {
+      angular.forEach(data, function(pizza) {
+        pizzaEnPedido = jQuery.extend({}, pizza);
+        pizzaEnPedido.cantidad = 0;
+        pedido.pizzas.push(pizzaEnPedido);
+      });
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+    });
+
 
   pedido.add = function(pizza) {
     if (pizza.cantidad<15)
