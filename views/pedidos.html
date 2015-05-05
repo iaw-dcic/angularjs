@@ -1,0 +1,20 @@
+<div class="titulo">
+    <h1>Sal's Pizza con AngularJS</h1>
+</div>
+<div class="menu" ng-controller="PedidosPizzas as pedidos">
+    <table>
+        <thead>
+            <tr><th>Pedido</th></tr>
+        </thead>
+    </table>
+    <a href="#/pedido">Pedido</a>
+    <table id="tabla">
+        <tbody>
+        	<tr ng-repeat="pedido in pedidos.datos.pedidos">
+        		<td ng-click="pedidos.seleccionar(pedido)">
+                    {{pedidos.mostrar(pedido)}}
+                </td>
+        	</tr>
+        </tbody>
+    </table>
+</div>

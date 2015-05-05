@@ -1,21 +1,8 @@
-var controladorPedido = angular.module('controladorPedido', []);
+var controladorPedido = angular.module('controladorPedido', ['servicio']);
 
-controladorPedido.controller('PedidoPizzas', function($http) {
+controladorPedido.controller('PedidoPizzas', ['datos', '$location', function(datos, $location) {
 	var pedido = this;
-	pedido.pizzas = [];
-
-  $http.get('data/pizzas.json').
-    success(function(data, status, headers, config) {
-      angular.forEach(data, function(pizza) {
-        pizzaEnPedido = jQuery.extend({}, pizza);
-        pizzaEnPedido.cantidad = 0;
-        pedido.pizzas.push(pizzaEnPedido);
-      });
-    }).
-    error(function(data, status, headers, config) {
-      // log error
-    });
-
+	pedido.datos = datos;
 
   pedido.add = function(pizza) {
     if (pizza.cantidad<15)
@@ -26,11 +13,15 @@ controladorPedido.controller('PedidoPizzas', function($http) {
       pizza.cantidad--;
   };
 
+  pedido.pedir = function() {
+    pedido.datos.pedir();
+  }
+
 	pedido.total = function() {
     var total = 0;
-    angular.forEach(pedido.pizzas, function(pizza) {
+    angular.forEach(pedido.datos.pedido, function(pizza) {
       total += pizza.cantidad * pizza.precio;
     });
     return total;
   };
-});
+}]);

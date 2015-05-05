@@ -159,3 +159,9 @@ tabla {
 .versiones a:hover {
     color: grey;
 }
+
+a {
+    color: white;
+    font-size: 20px; 
+    text-decoration: none;
+}
