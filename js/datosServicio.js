@@ -1,4 +1,4 @@
-angular.module('servicio', []).factory('datos', ['$http', function($http){
+pizzasApp.factory('datos', ['$http', function($http){
   var datos = {};
   datos.pedidoActual = [];
   datos.pedidos = [];

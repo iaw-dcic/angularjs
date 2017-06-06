@@ -8,7 +8,7 @@
         </thead>
     </table>
     <div class="calculo">
-        <input class="filtro" type="text" data-ng-model="inputNombre"/>
+        <input class="filtro" type="text" data-ng-model="filtro"/>
         <span class="total">
             Total: <span>{{pedido.total() | currency}}</span>
         </span>
@@ -16,7 +16,7 @@
 
     <table id="tabla">
         <tbody>
-        	<tr ng-repeat="pizza in pedido.todos() | orderBy:'tipo' | filter:inputNombre">
+        	<tr ng-repeat="pizza in pedido.todos() | orderBy:'tipo' | filter:filtro">
         		<td>
                     <img ng-click="pedido.add(pizza)" src="images/plus.svg" class="svgicon"></img>   
                     <input ng-model="pizza.cantidad" type="number" min="0" max="15">

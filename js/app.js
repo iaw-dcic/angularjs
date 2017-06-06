@@ -1,4 +1,4 @@
-var pizzasApp = angular.module('pizzasApp', ['ngRoute', 'servicio']);
+var pizzasApp = angular.module('pizzasApp', ['ngRoute']);
 
 pizzasApp.config(['$routeProvider',
   function($routeProvider) {
