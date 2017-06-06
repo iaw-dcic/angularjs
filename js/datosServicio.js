@@ -26,7 +26,8 @@ pizzasApp.factory('datos', ['$http', function($http){
   };
   
   datos.pedir = function() {
-    datos.pedidos.push(datos.pedidoActual);
+    if (datos.pedidos.indexOf(datos.pedidoActual) === -1)
+      datos.pedidos.push(datos.pedidoActual);
     datos.pedidoActual = crearPedidoVacio(datos.pedidoActual);
   };
 

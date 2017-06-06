@@ -1,28 +1,27 @@
-pizzasApp.controller('controladorPedido', ['datos', '$location', function(datos, $location) {
-	var pedido = this;
-	pedido.todos = datos.pedido;
-  pedido.pedir = datos.pedir;
+pizzasApp.controller('controladorPedido', ['$scope', 'datos', '$location', function($scope, datos, $location) {
+	$scope.pizzas = datos.pedido;
+  $scope.pedir = datos.pedir;
 
-  pedido.add = function(pizza) {
+  $scope.add = function(pizza) {
     if (pizza.cantidad<15)
       pizza.cantidad++;
   };
-  pedido.remove = function(pizza) {
+  $scope.remove = function(pizza) {
     if (pizza.cantidad>0)
       pizza.cantidad--;
   };
 
-	pedido.total = function() {
+	$scope.total = function() {
     var total = 0;
-    angular.forEach(pedido.todos(), function(pizza) {
+    angular.forEach(datos.pedido(), function(pizza) {
       total += pizza.cantidad * pizza.precio;
     });
     return total;
   };
 
-  pedido.vacio = function() {
+  $scope.vacio = function() {
     var result = true;
-    angular.forEach(pedido.todos(), function(pizza) {
+    angular.forEach(datos.pedido(), function(pizza) {
       if (pizza.cantidad != 0) {
         result = false;
       }

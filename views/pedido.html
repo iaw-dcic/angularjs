@@ -10,17 +10,17 @@
     <div class="calculo">
         <input class="filtro" type="text" data-ng-model="filtro"/>
         <span class="total">
-            Total: <span>{{pedido.total() | currency}}</span>
+            Total: <span>{{total() | currency}}</span>
         </span>
     </div>
 
     <table id="tabla">
         <tbody>
-        	<tr ng-repeat="pizza in pedido.todos() | orderBy:'tipo' | filter:filtro">
+        	<tr ng-repeat="pizza in pizzas() | orderBy:'tipo' | filter:filtro">
         		<td>
-                    <img ng-click="pedido.add(pizza)" src="images/plus.svg" class="svgicon"></img>   
+                    <img ng-click="add(pizza)" src="images/plus.svg" class="svgicon"></img>   
                     <input ng-model="pizza.cantidad" type="number" min="0" max="15">
-                    <img ng-click="pedido.remove(pizza)" src="images/minus.svg" class="svgicon"></img> 
+                    <img ng-click="remove(pizza)" src="images/minus.svg" class="svgicon"></img> 
                 </td>
                 <td>{{pizza.nombre}}</td>
                 <td>{{pizza.tipo}}</td>
@@ -31,7 +31,7 @@
     <div class="row">
         <a href="#/pedidos">Ver Pedidos</a>
     </div>
-    <div class="row" ng-hide="pedido.vacio()">
-        <button ng-click="pedido.pedir()">Pedir</button>
+    <div class="row" ng-hide="vacio()">
+        <button ng-click="pedir()">Pedir</button>
     </div>
 </div>

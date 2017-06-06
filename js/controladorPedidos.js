@@ -1,8 +1,9 @@
-pizzasApp.controller('controladorPedidos', ['datos', '$location', function(datos, $location) {
-	var pedidos = this;
-	pedidos.datos = datos;
+pizzasApp.controller('controladorPedidos', ['$scope', 'datos', '$location', function($scope, datos, $location) {
+	$scope.pedidos = function() {
+    return datos.pedidos;
+  }
 
-  pedidos.mostrar = function(pedido) {
+  $scope.mostrar = function(pedido) {
     var result = '';
     angular.forEach(pedido, function(pizza) {
       if (pizza.cantidad !== 0) 
@@ -11,8 +12,8 @@ pizzasApp.controller('controladorPedidos', ['datos', '$location', function(datos
     return result;
   }
 
-  pedidos.seleccionar = function(seleccionado) {
-    pedidos.datos.seleccionar(seleccionado);
+  $scope.seleccionar = function(seleccionado) {
+    datos.seleccionar(seleccionado);
     $location.path('./#/pedido')
   };
 }]);

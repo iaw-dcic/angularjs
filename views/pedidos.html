@@ -9,9 +9,9 @@
     </table>
     <table id="tabla">
         <tbody>
-        	<tr ng-repeat="pedido in pedidos.datos.pedidos">
-        		<td ng-click="pedidos.seleccionar(pedido)" class="pedido">
-                    {{pedidos.mostrar(pedido)}}
+        	<tr ng-repeat="pedido in pedidos()">
+        		<td ng-click="seleccionar(pedido)" class="pedido">
+                    {{mostrar(pedido)}}
                 </td>
         	</tr>
             <tr>
