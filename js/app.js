@@ -1,15 +1,15 @@
-var pizzasApp = angular.module('pizzasApp', ['ngRoute', 'controladorPedido', 'controladorPedidos']);
+var pizzasApp = angular.module('pizzasApp', ['ngRoute', 'servicio']);
 
 pizzasApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/pedido', {
         templateUrl: 'views/pedido.html',
-        controller: 'PedidoPizzas'
+        controller: 'controladorPedido'
       }).
       when('/pedidos', {
         templateUrl: 'views/pedidos.html',
-        controller: 'PedidosPizzas'
+        controller: 'controladorPedidos'
       }).
       otherwise({
         redirectTo: '/pedido'

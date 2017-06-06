@@ -1,6 +1,4 @@
-var controladorPedido = angular.module('controladorPedido', ['servicio']);
-
-controladorPedido.controller('PedidoPizzas', ['datos', '$location', function(datos, $location) {
+pizzasApp.controller('controladorPedido', ['datos', '$location', function(datos, $location) {
 	var pedido = this;
 	pedido.todos = datos.pedido;
   pedido.pedir = datos.pedir;
