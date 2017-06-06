@@ -4,17 +4,21 @@
 <div class="menu" ng-controller="PedidosPizzas as pedidos">
     <table>
         <thead>
-            <tr><th>Pedido</th></tr>
+            <tr><th>Pedidos</th></tr>
         </thead>
     </table>
-    <a href="#/pedido">Pedido</a>
     <table id="tabla">
         <tbody>
         	<tr ng-repeat="pedido in pedidos.datos.pedidos">
-        		<td ng-click="pedidos.seleccionar(pedido)">
+        		<td ng-click="pedidos.seleccionar(pedido)" class="pedido">
                     {{pedidos.mostrar(pedido)}}
                 </td>
         	</tr>
+            <tr>
+                <td class="pedido">
+                    <a href="#/pedido">Volver</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

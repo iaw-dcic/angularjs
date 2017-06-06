@@ -162,6 +162,16 @@ tabla {
 
 a {
     color: white;
-    font-size: 20px; 
+    /*font-size: 20px; */
     text-decoration: none;
+}
+
+.row {
+    padding: 5px;
+    text-align: center;
+}
+
+.pedido {
+    padding-top: 20px;
+    cursor: pointer;
 }

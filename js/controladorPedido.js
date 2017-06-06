@@ -2,7 +2,8 @@ var controladorPedido = angular.module('controladorPedido', ['servicio']);
 
 controladorPedido.controller('PedidoPizzas', ['datos', '$location', function(datos, $location) {
 	var pedido = this;
-	pedido.datos = datos;
+	pedido.todos = datos.pedido;
+  pedido.pedir = datos.pedir;
 
   pedido.add = function(pizza) {
     if (pizza.cantidad<15)
@@ -13,15 +14,21 @@ controladorPedido.controller('PedidoPizzas', ['datos', '$location', function(dat
       pizza.cantidad--;
   };
 
-  pedido.pedir = function() {
-    pedido.datos.pedir();
-  }
-
 	pedido.total = function() {
     var total = 0;
-    angular.forEach(pedido.datos.pedido, function(pizza) {
+    angular.forEach(pedido.todos(), function(pizza) {
       total += pizza.cantidad * pizza.precio;
     });
     return total;
   };
+
+  pedido.vacio = function() {
+    var result = true;
+    angular.forEach(pedido.todos(), function(pizza) {
+      if (pizza.cantidad != 0) {
+        result = false;
+      }
+    });
+    return result;
+  }
 }]);
